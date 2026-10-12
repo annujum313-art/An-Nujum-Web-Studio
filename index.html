@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>জুনায়েদ এমদাদ | ই-কমার্স ওয়েব ডেভেলপমেন্ট সার্ভিস ও পোর্টফোলিও</title>
+
+    <!-- PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1b4332">
+    <link rel="manifest" href="data:application/json,{\"name\":\"Junayed Portfolio\",\"short_name\":\"Junayed\",\"start_url\":\".\",\"display\":\"standalone\",\"background_color\":\"#1b4332\",\"theme_color\":\"#1b4332\"}">
+
+    <style>
+        :root {
+            --primary-color: #1b4332;
+            --accent-color: #2d6a4f;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --muted-text: #6c757d;
+            --whatsapp-color: #25d366;
+            --border-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            padding-bottom: 40px;
+        }
+
+        /* হেডার */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .contact-btn-head {
+            background: var(--whatsapp-color);
+            color: white;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* কার্ড স্টাইল */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border: 1px solid #e9ecef;
+        }
+
+        /* হিরো বায়োডাটা সেকশন */
+        .bio-profile {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #d8f3dc;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: bold;
+            border: 3px solid var(--accent-color);
+            flex-shrink: 0;
+        }
+
+        .bio-details h2 {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+        }
+
+        .institute-tag {
+            font-size: 13px;
+            color: var(--accent-color);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .phone-tag {
+            font-size: 13px;
+            color: var(--muted-text);
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* সার্ভিস ফিচার গ্রিড */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .feature-item {
+            background-color: #f1f8f5;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #d8f3dc;
+        }
+
+        .feature-item h5 {
+            color: var(--primary-color);
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .feature-item p {
+            font-size: 11px;
+            color: var(--muted-text);
+        }
+
+        /* ই-কমার্স ডেমো স্টোর সেকশন */
+        .demo-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .product-card {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px;
+            background: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+        .product-img-placeholder {
+            height: 100px;
+            background: #e9ecef;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .product-name {
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .product-price {
+            font-size: 12px;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin: 4px 0 8px 0;
+        }
+
+        .btn-cart {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-cart:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* কন্টাক্ট বোতাম */
+        .action-btns {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn-whatsapp {
+            flex: 1;
+            background-color: var(--whatsapp-color);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn-call {
+            flex: 1;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- হেডার -->
+    <header>
+        <div class="logo">🌐 জুনায়েদ এমদাদ</div>
+        <a href="https://wa.me/8801985627469" class="contact-btn-head" target="_blank">
+            💬 WhatsApp
+        </a>
+    </header>
+
+    <div class="container">
+
+        <!-- ১. ইউজার বায়োডাটা ও পরিচিতি -->
+        <div class="card">
+            <div class="bio-profile">
+                <div class="avatar">জ</div>
+                <div class="bio-details">
+                    <h2>জুনায়েদ এমদাদ</h2>
+                    <div class="institute-tag">শিক্ষার্থী, আল-জামিয়াতুল আহলিয়া দারুল উলুম মুঈনুল ইসলাম হাটহাজারী, চট্টগ্রাম, বাংলাদেশ।</div>
+                    <div class="phone-tag">📞 মোবাইল: 01985-627469</div>
+                </div>
+            </div>
+
+            <div class="action-btns">
+                <a href="https://wa.me/8801985627469" class="btn-whatsapp" target="_blank">💬 ওয়াটসঅ্যাপে মেসেজ দিন</a>
+                <a href="tel:01985627469" class="btn-call">📞 সরাসরি কল করুন</a>
+            </div>
+        </div>
+
+        <!-- ২. ই-কমার্স সার্ভিস ফিচারসমূহ -->
+        <div class="card">
+            <h4 style="font-size: 15px; color: var(--primary-color); margin-bottom: 8px;">🚀 আমার ই-কমার্স ওয়েবসাইট সার্ভিসের সুবিধাসমূহ</h4>
+            <p style="font-size: 12px; color: var(--muted-text);">আপনার ব্যবসার জন্য আমরা যে ধরনের আকর্ষণীয় ও রেসপনসিভ ই-কমার্স ওয়েবসাইট তৈরি করে থাকি:</p>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h5>📱 ১০০% মোবাইল রেসপনসিভ</h5>
+                    <p>মোবাইল, ট্যাবলেট ও কম্পিউটার সব ডিভাইসে দ্রুত কাজ করবে।</p>
+                </div>
+                <div class="feature-item">
+                    <h5>💬 সরাসরি WhatsApp অর্ডার</h5>
+                    <p>কাস্টমার এক ক্লিকে সরাসরি আপনার ওয়াটসঅ্যাপে অর্ডার পাঠাতে পারবে।</p>
+                </div>
+                <div class="feature-item">
+                    <h5>🛒 ক্যাটাগরি ও অর্ডার ফিল্টার</h5>
+                    <p>বই, পোশাক, কসমেটিকস সহ যেকোনো প্রোডাক্টের সুন্দর ক্যাটালগ।</p>
+                </div>
+                <div class="feature-item">
+                    <h5>⚡ সুপার ফাস্ট লোডিং</h5>
+                    <p>কোনো বিলম্ব ছাড়াই অত্যন্ত দ্রুতগতিতে পেজ লোড হবে।</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ৩. ই-কমার্স ডেমো শোকেস (Demo Store) -->
+        <div class="card">
+            <div class="demo-title">
+                <span>🛍️ ই-কমার্স ওয়েবসাইটের ডেমো ফরম্যাট</span>
+                <span style="font-size: 11px; color: var(--accent-color);">[ডেমো ভিউ]</span>
+            </div>
+
+            <div class="product-grid">
+                <!-- ডেমো প্রোডাক্ট ১ -->
+                <div class="product-card">
+                    <div class="product-img-placeholder">📚</div>
+                    <div class="product-name">রিয়াদুস সালেহীন (১ম খণ্ড)</div>
+                    <div class="product-price">৳ ৪৫০</div>
+                    <button class="btn-cart" onclick="alert('এটি একটি ডেমো প্রোডাক্ট। এমন ওয়েবসাইট আপনার ব্যবসার জন্য বানাতে যোগাযোগ করুন!')">অর্ডার করুন</button>
+                </div>
+
+                <!-- ডেমো প্রোডাক্ট ২ -->
+                <div class="product-card">
+                    <div class="product-img-placeholder">🎁</div>
+                    <div class="product-name">প্রিমিয়াম ইসলামিক গিফট বক্স</div>
+                    <div class="product-price">৳ ১,২৫০</div>
+                    <button class="btn-cart" onclick="alert('এটি একটি ডেমো প্রোডাক্ট। এমন ওয়েবসাইট আপনার ব্যবসার জন্য বানাতে যোগাযোগ করুন!')">অর্ডার করুন</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+  </html>
+                      
